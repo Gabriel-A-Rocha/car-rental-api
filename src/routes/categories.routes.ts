@@ -6,7 +6,7 @@ const categoriesRoutes = Router();
 const categories = [];
 
 categoriesRoutes
-  .route("/categories")
+  .route("/")
 
   .get((req, res) => {
     return res.status(200).json({ msg: "GET /categories" });
