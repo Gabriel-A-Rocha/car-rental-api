@@ -14,9 +14,15 @@ categoriesRoutes
   .post((req, res) => {
     const { name, description } = req.body;
 
-    const newCategory = categoriesRepository.create(name, description);
+    const categoryAlreadyExists = categoriesRepository.findByName(name);
 
-    return res.status(201).json(newCategory);
+    if (categoryAlreadyExists) {
+      return res.status(400).json({ error: "Category already exists" });
+    }
+
+    const category = categoriesRepository.create(name, description);
+
+    return res.status(201).json(category);
   });
 
 export { categoriesRoutes };
