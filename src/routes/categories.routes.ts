@@ -8,7 +8,7 @@ categoriesRoutes
   .route("/")
 
   .get((req, res) => {
-    return res.status(200).json({ msg: "GET /categories" });
+    return res.status(200).json(categoriesRepository.list());
   })
 
   .post((req, res) => {

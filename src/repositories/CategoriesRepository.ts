@@ -14,6 +14,10 @@ class CategoriesRepository {
 
     return category;
   }
+
+  list(): Array<Category> {
+    return this.categories;
+  }
 }
 
 export { CategoriesRepository };
