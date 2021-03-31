@@ -7,11 +7,7 @@ class CategoriesRepository {
     this.categories = [];
   }
 
-  create(name: string, description: string) {
-    if (this.findByName(name)) {
-      return false;
-    }
-
+  create(name: string, description: string): Category {
     const category = new Category(name, description);
 
     this.categories.push(category);
