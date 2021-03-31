@@ -1,6 +1,7 @@
 import { Category } from "../models/Category";
+import { ICategoriesRepository } from "./ICategoriesRepository";
 
-class CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
   private categories: Array<Category>;
 
   constructor() {
@@ -19,7 +20,7 @@ class CategoriesRepository {
     return this.categories;
   }
 
-  findByName(name: string) {
+  findByName(name: string): Category | undefined {
     return this.categories.find((c) => c.name === name);
   }
 }
