@@ -1,7 +1,7 @@
 import { Category } from "../models/Category";
 import { ICategoriesRepository } from "./ICategoriesRepository";
 
-class CategoriesRepository implements ICategoriesRepository {
+class VolatileCategoriesRepository implements ICategoriesRepository {
   private categories: Array<Category>;
 
   constructor() {
@@ -25,4 +25,4 @@ class CategoriesRepository implements ICategoriesRepository {
   }
 }
 
-export { CategoriesRepository };
+export { VolatileCategoriesRepository };

@@ -1,7 +1,7 @@
 import { Specification } from "../models/Specification";
 import { ISpecificationsRepository } from "./ISpecificationsRepository";
 
-class SpecificationsRepository implements ISpecificationsRepository {
+class VolatileSpecificationsRepository implements ISpecificationsRepository {
   private specifications: Array<Specification>;
 
   constructor() {
@@ -27,4 +27,4 @@ class SpecificationsRepository implements ISpecificationsRepository {
   }
 }
 
-export { SpecificationsRepository };
+export { VolatileSpecificationsRepository };

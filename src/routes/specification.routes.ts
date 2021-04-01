@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { SpecificationsRepository } from "../repositories/SpecificationsRepository";
-import { CreateSpecificationService } from "../services/CreateSpecificationService";
+import { VolatileSpecificationsRepository } from "../modules/cars/repositories/VolatileSpecificationsRepository";
+import { CreateSpecificationService } from "../modules/cars/services/CreateSpecificationService";
 
 const specificationsRouter = Router();
 
-const specificationsRepository = new SpecificationsRepository();
+const specificationsRepository = new VolatileSpecificationsRepository();
 
 specificationsRouter
   .route("/")

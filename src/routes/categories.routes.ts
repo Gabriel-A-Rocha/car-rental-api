@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { CategoriesRepository } from "../repositories/CategoriesRepository";
-import { CreateCategoryService } from "../services/CreateCategoryService";
+import { VolatileCategoriesRepository } from "../modules/cars/repositories/VolatileCategoriesRepository";
+import { CreateCategoryService } from "../modules/cars/services/CreateCategoryService";
 
 const categoriesRoutes = Router();
 
-const categoriesRepository = new CategoriesRepository();
+const categoriesRepository = new VolatileCategoriesRepository();
 
 categoriesRoutes
   .route("/")
