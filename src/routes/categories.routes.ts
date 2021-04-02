@@ -2,11 +2,11 @@ import { Router } from "express";
 import { VolatileCategoriesRepository } from "../modules/cars/repositories/VolatileCategoriesRepository";
 import { CreateCategoryService } from "../modules/cars/services/CreateCategoryService";
 
-const categoriesRoutes = Router();
+const categoriesRouter = Router();
 
 const categoriesRepository = new VolatileCategoriesRepository();
 
-categoriesRoutes
+categoriesRouter
   .route("/")
 
   .post((req, res) => {
@@ -29,4 +29,4 @@ categoriesRoutes
     return res.status(200).json(categories);
   });
 
-export { categoriesRoutes };
+export { categoriesRouter };

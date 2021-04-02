@@ -1,5 +1,5 @@
 import express from "express";
-import { categoriesRoutes } from "./routes/categories.routes";
+import { categoriesRouter } from "./routes/categories.routes";
 import { specificationsRouter } from "./routes/specification.routes";
 
 const app = express();
@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/categories", categoriesRoutes);
+app.use("/categories", categoriesRouter);
 app.use("/specifications", specificationsRouter);
 
 const port = 3333;
