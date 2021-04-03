@@ -1,32 +1,13 @@
 import { Router } from "express";
-import { VolatileCategoriesRepository } from "../modules/cars/repositories/VolatileCategoriesRepository";
-import { CreateCategoryService } from "../modules/cars/services/CreateCategoryService";
+import { createCategoryController } from "../modules/cars/useCases/createCategory";
 
 const categoriesRouter = Router();
-
-const categoriesRepository = new VolatileCategoriesRepository();
 
 categoriesRouter
   .route("/")
 
-  .post((req, res) => {
-    const { name, description } = req.body;
+  .post((req, res) => createCategoryController.handle(req, res));
 
-    const createCategoryService = new CreateCategoryService(categoriesRepository);
-
-    try {
-      const category = createCategoryService.execute(name, description);
-
-      return res.status(201).json(category);
-    } catch (error) {
-      return res.status(400).json({ error });
-    }
-  })
-
-  .get((req, res) => {
-    const categories = categoriesRepository.list();
-
-    return res.status(200).json(categories);
-  });
+//.get((req, res) => categoryController.list(req, res));
 
 export { categoriesRouter };
