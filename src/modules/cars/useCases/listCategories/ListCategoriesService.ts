@@ -7,7 +7,7 @@ class ListCategoriesService {
     this.categoriesRepository = categoriesRepository;
   }
 
-  handle() {
+  execute() {
     return this.categoriesRepository.list();
   }
 }

@@ -4,8 +4,18 @@ import { ICategoriesRepository } from "./ICategoriesRepository";
 class VolatileCategoriesRepository implements ICategoriesRepository {
   private categories: Array<Category>;
 
-  constructor() {
+  private static singletonInstance: VolatileCategoriesRepository;
+
+  private constructor() {
     this.categories = [];
+  }
+
+  static getInstance() {
+    if (!this.singletonInstance) {
+      this.singletonInstance = new VolatileCategoriesRepository();
+    }
+
+    return this.singletonInstance;
   }
 
   create(name: string, description: string): Category {
