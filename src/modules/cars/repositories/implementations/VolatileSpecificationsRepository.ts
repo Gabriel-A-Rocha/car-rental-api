@@ -1,5 +1,5 @@
-import { Specification } from "../models/Specification";
-import { ISpecificationsRepository } from "./ISpecificationsRepository";
+import { Specification } from "../../models/Specification";
+import { ISpecificationsRepository } from "../ISpecificationsRepository";
 
 class VolatileSpecificationsRepository implements ISpecificationsRepository {
   private specifications: Array<Specification>;

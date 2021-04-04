@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { VolatileSpecificationsRepository } from "../modules/cars/repositories/VolatileSpecificationsRepository";
+import { VolatileSpecificationsRepository } from "../modules/cars/repositories/implementations/VolatileSpecificationsRepository";
 import { CreateSpecificationService } from "../modules/cars/services/CreateSpecificationService";
 
 const specificationsRouter = Router();

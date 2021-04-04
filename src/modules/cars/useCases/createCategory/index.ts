@@ -1,4 +1,4 @@
-import { VolatileCategoriesRepository } from "../../repositories/VolatileCategoriesRepository";
+import { VolatileCategoriesRepository } from "../../repositories/implementations/VolatileCategoriesRepository";
 import { CreateCategoryController } from "./CreateCategoryController";
 import { CreateCategoryService } from "./CreateCategoryService";
 

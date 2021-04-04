@@ -1,5 +1,5 @@
-import { Category } from "../models/Category";
-import { ICategoriesRepository } from "./ICategoriesRepository";
+import { Category } from "../../models/Category";
+import { ICategoriesRepository } from "../ICategoriesRepository";
 
 class VolatileCategoriesRepository implements ICategoriesRepository {
   private categories: Array<Category>;
