@@ -1,32 +1,17 @@
 import { Router } from "express";
-import { VolatileSpecificationsRepository } from "../modules/cars/repositories/implementations/VolatileSpecificationsRepository";
-import { CreateSpecificationService } from "../modules/cars/services/CreateSpecificationService";
+import { createSpecificationController } from "../modules/cars/useCases/createSpecifications";
 
 const specificationsRouter = Router();
-
-const specificationsRepository = new VolatileSpecificationsRepository();
 
 specificationsRouter
   .route("/")
 
-  .post((req, res) => {
-    const { name, description } = req.body;
-
-    try {
-      const createSpecificationService = new CreateSpecificationService(specificationsRepository);
-
-      const newSpecification = createSpecificationService.execute(name, description);
-
-      return res.status(201).json(newSpecification);
-    } catch (error) {
-      return res.status(400).json({ error });
-    }
-  })
+  .post((req, res) => createSpecificationController.handle(req, res))
 
   .get((req, res) => {
-    const specifications = specificationsRepository.list();
+    // const specifications = specificationsRepository.list();
 
-    return res.status(200).json(specifications);
+    return res.status(200).json();
   });
 
 export { specificationsRouter };
