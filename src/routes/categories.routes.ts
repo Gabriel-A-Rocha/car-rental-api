@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { createCategoryController } from "../modules/cars/useCases/createCategory";
 import { listCategoriesController } from "../modules/cars/useCases/listCategories";
-
 import multer from "multer";
 
 const upload = multer({ dest: "./tmp" });
@@ -20,8 +19,8 @@ categoriesRouter
 
   .post(upload.single("file"), (req, res) => {
     console.log(req.file);
-    console.log(req.body);
-    console.log(req.body);
+
+    return res.status(201).json({ msg: "Upload successful" });
   });
 
 export { categoriesRouter };
