@@ -10,14 +10,11 @@ const categoriesRouter = Router();
 
 categoriesRouter
   .route("/")
-
   .post((req, res) => createCategoryController.handle(req, res))
-
   .get((req, res) => listCategoriesController.handle(req, res));
 
 categoriesRouter
   .route("/import")
-
   .post(upload.single("file"), (req, res) => importCategoriesController.handle(req, res));
 
 export { categoriesRouter };
