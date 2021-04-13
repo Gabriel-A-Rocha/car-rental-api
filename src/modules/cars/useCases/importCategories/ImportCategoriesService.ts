@@ -41,6 +41,16 @@ class ImportCategoriesService {
   async execute(file: Express.Multer.File) {
     const categories = await this.loadCategories(file);
 
+    categories.map((c) => {
+      const { name, description } = c;
+
+      const record = this.categoriesRepository.findByName(name);
+
+      if (!record) {
+        this.categoriesRepository.create(name, description);
+      }
+    });
+
     return categories;
   }
 }
