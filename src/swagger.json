@@ -1,0 +1,11 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Car Rental API Documentation",
+        "description": "Car Rental API",
+        "version": "1.0.0",
+        "contact": {
+            "email": "gabriel@gmail.com"
+        }
+    }
+}
