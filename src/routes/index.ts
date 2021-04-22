@@ -9,7 +9,6 @@ const router = Router();
 router.use("/categories", categoriesRouter);
 router.use("/specifications", specificationsRouter);
 
-// documentation routes
 router.use("/api-docs", swaggerUi.serve);
 router.get("/api-docs", swaggerUi.setup(swaggerConfig));
 
