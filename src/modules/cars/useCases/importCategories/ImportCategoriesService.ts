@@ -51,6 +51,8 @@ class ImportCategoriesService {
       }
     });
 
+    fs.promises.unlink(file.path);
+
     return categories;
   }
 }
