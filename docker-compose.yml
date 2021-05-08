@@ -1,10 +1,32 @@
 version: "3.7"
 
 services:
+  database_postgres:
+    image: postgres
+    container_name: postgres-car-rental
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=gabriel
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=car-rental
+    volumes:
+      - pgdata:/data/postgres
+
   app:
     build: .
     container_name: carrental
+    restart: always
     ports:
       - 3333:3333
     volumes:
       - .:/usr/app
+    links:
+      - database
+    depends_on:
+      - database
+
+volumes:
+  pgdata:
+    driver: local

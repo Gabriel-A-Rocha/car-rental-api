@@ -1,9 +1,11 @@
-import { createConnection } from "typeorm";
-import { Category } from "../modules/cars/models/Category";
-import { Specification } from "../modules/cars/models/Specification";
+import { createConnection, getConnectionOptions } from "typeorm";
 
-createConnection()
-  .then((connection) => {
-    console.log("Database connection initiated");
-  })
-  .catch((error) => console.log(error));
+interface IOptions {
+  host: string;
+}
+
+getConnectionOptions().then((options) => {
+  const newOptions = options as IOptions;
+  newOptions.host = "postgres-car-rental";
+  createConnection({ ...options });
+});
