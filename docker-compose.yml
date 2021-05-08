@@ -23,9 +23,9 @@ services:
     volumes:
       - .:/usr/app
     links:
-      - database
+      - database_postgres
     depends_on:
-      - database
+      - database_postgres
 
 volumes:
   pgdata:
