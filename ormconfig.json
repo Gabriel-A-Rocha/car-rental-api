@@ -10,5 +10,11 @@
         "Specification"
     ],
     "synchronize": true,
-    "logging": false
+    "logging": false,
+    "migrations": [
+        "./src/database/migrations/*.ts"
+    ],
+    "cli": {
+        "migrationsDir": "./src/database/migrations"
+    }
 }

@@ -6,7 +6,8 @@
   "scripts": {
     "tsc": "tsc",
     "start": "ts-node-dev src/server.ts",
-    "start:debug": "ts-node-dev --inspect -- src/server.ts "
+    "start:debug": "ts-node-dev --inspect -- src/server.ts ",
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "author": "",
   "license": "ISC",
