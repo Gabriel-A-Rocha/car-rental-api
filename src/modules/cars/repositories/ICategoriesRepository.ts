@@ -1,9 +1,9 @@
 import { Category } from "../entities/Category";
 
 interface ICategoriesRepository {
-  create(name: string, description: string): Category;
-  list(): Array<Category>;
-  findByName(name: string): Category | undefined;
+  create(name: string, description: string): Promise<void>;
+  list(): Promise<Category[]>;
+  findByName(name: string): Promise<Category | undefined>;
 }
 
 export { ICategoriesRepository };
