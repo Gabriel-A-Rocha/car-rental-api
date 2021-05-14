@@ -1,4 +1,4 @@
-import { Category } from "../models/Category";
+import { Category } from "../entities/Category";
 
 interface ICategoriesRepository {
   create(name: string, description: string): Category;
