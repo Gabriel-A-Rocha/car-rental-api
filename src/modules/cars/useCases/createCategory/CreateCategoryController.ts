@@ -8,13 +8,13 @@ class CreateCategoryController {
     this.createCategoryService = createCategoryService;
   }
 
-  handle(req: Request, res: Response) {
+  async handle(req: Request, res: Response): Promise<Response> {
     try {
       const { name, description } = req.body;
 
-      const category = this.createCategoryService.execute(name, description);
+      await this.createCategoryService.execute(name, description);
 
-      return res.status(201).json(category);
+      return res.status(201).json();
     } catch (error) {
       return res.status(400).json({ error });
     }

@@ -1,8 +1,8 @@
-import { VolatileCategoriesRepository } from "../../repositories/implementations/VolatileCategoriesRepository";
+import { CategoriesRepository } from "../../repositories/implementations/CategoriesRepository";
 import { ImportCategoriesController } from "./ImportCategoriesController";
 import { ImportCategoriesService } from "./ImportCategoriesService";
 
-const categoriesRepository = VolatileCategoriesRepository.getInstance();
+const categoriesRepository = new CategoriesRepository();
 
 const importCategoriesService = new ImportCategoriesService(categoriesRepository);
 const importCategoriesController = new ImportCategoriesController(importCategoriesService);

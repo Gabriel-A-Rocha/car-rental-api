@@ -5,17 +5,8 @@ import { ICategoriesRepository } from "../ICategoriesRepository";
 class CategoriesRepository implements ICategoriesRepository {
   private repository: Repository<Category>;
 
-  private static singletonInstance: CategoriesRepository;
-
-  private constructor() {
+  constructor() {
     this.repository = getRepository(Category);
-  }
-
-  static getInstance() {
-    if (!this.singletonInstance) {
-      this.singletonInstance = new CategoriesRepository();
-    }
-    return this.singletonInstance;
   }
 
   async create(name: string, description: string): Promise<void> {
