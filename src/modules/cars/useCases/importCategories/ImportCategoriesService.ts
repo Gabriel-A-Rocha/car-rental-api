@@ -6,7 +6,6 @@ interface ICategoryUpload {
   name: string;
   description: string;
 }
-
 class ImportCategoriesService {
   private categoriesRepository: ICategoriesRepository;
 
@@ -41,13 +40,13 @@ class ImportCategoriesService {
   async execute(file: Express.Multer.File) {
     const categories = await this.loadCategories(file);
 
-    categories.map((c) => {
+    categories.map(async (c) => {
       const { name, description } = c;
 
-      const record = this.categoriesRepository.findByName(name);
+      const record = await this.categoriesRepository.findByName(name);
 
       if (!record) {
-        this.categoriesRepository.create(name, description);
+        await this.categoriesRepository.create(name, description);
       }
     });
 

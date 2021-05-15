@@ -6,8 +6,7 @@
     "password": "postgres",
     "database": "car-rental",
     "entities": [
-        "Category",
-        "Specification"
+        "./src/modules/cars/entities/*.ts"
     ],
     "synchronize": true,
     "logging": false,

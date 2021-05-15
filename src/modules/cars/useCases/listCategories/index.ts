@@ -3,7 +3,6 @@ import { ListCategoriesController } from "../listCategories/ListCategoriesContro
 import { ListCategoriesService } from "../listCategories/ListCategoriesService";
 
 const categoriesRepository = new CategoriesRepository();
-
 const listCategoriesService = new ListCategoriesService(categoriesRepository);
 const listCategoriesController = new ListCategoriesController(listCategoriesService);
 

@@ -1,11 +1,11 @@
 import { createConnection, getConnectionOptions } from "typeorm";
 
-interface IOptions {
+/* interface IOptions {
   host: string;
 }
 
 getConnectionOptions().then((options) => {
   const newOptions = options as IOptions;
-  newOptions.host = "database_postgres";
+  newOptions.host = "postgres-car-rental";
   createConnection({ ...options });
-});
+}); */
