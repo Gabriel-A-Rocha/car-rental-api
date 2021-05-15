@@ -8,20 +8,18 @@ class CreateSpecificationService {
     this.specificationsRepository = specificationsRepository;
   }
 
-  execute(name: string, description: string): Specification {
+  async execute(name: string, description: string): Promise<void> {
     if (!name || !description) {
       throw "Empty parameters.";
     }
 
-    const specificationRecord = this.specificationsRepository.findByName(name);
+    const specificationRecord = await this.specificationsRepository.findByName(name);
 
     if (specificationRecord) {
       throw "Specification name already exists.";
     }
 
-    const newSpecification = this.specificationsRepository.create(name, description);
-
-    return newSpecification;
+    this.specificationsRepository.create(name, description);
   }
 }
 

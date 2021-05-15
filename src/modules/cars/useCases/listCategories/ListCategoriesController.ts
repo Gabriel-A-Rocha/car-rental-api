@@ -7,9 +7,9 @@ class ListCategoriesController {
   constructor(listCategoriesService: ListCategoriesService) {
     this.listCategoriesService = listCategoriesService;
   }
-  handle(req: Request, res: Response) {
+  async handle(req: Request, res: Response) {
     try {
-      const categories = this.listCategoriesService.execute();
+      const categories = await this.listCategoriesService.execute();
 
       return res.status(200).json(categories);
     } catch (error) {

@@ -2,8 +2,11 @@ import { CategoriesRepository } from "../../repositories/implementations/Categor
 import { ListCategoriesController } from "../listCategories/ListCategoriesController";
 import { ListCategoriesService } from "../listCategories/ListCategoriesService";
 
-const categoriesRepository = new CategoriesRepository();
-const listCategoriesService = new ListCategoriesService(categoriesRepository);
-const listCategoriesController = new ListCategoriesController(listCategoriesService);
+const instantiateListCategoryController = () => {
+  const categoriesRepository = new CategoriesRepository();
+  const listCategoriesService = new ListCategoriesService(categoriesRepository);
+  const listCategoriesController = new ListCategoriesController(listCategoriesService);
+  return listCategoriesController;
+};
 
-export { listCategoriesController };
+export { instantiateListCategoryController };

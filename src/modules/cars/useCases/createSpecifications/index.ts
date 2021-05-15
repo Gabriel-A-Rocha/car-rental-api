@@ -1,11 +1,14 @@
-import { VolatileSpecificationsRepository } from "../../repositories/implementations/VolatileSpecificationsRepository";
+import { SpecificationsRepository } from "../../repositories/implementations/SpecificationsRepository";
 import { CreateSpecificationController } from "./CreateSpecificationController";
 import { CreateSpecificationService } from "./CreateSpecificationService";
 
-const specificationsRepository = VolatileSpecificationsRepository.getInstance();
-const createSpecificationsService = new CreateSpecificationService(specificationsRepository);
-const createSpecificationController = new CreateSpecificationController(
-  createSpecificationsService
-);
+const instantiateCreateSpecificationController = () => {
+  const specificationsRepository = new SpecificationsRepository();
+  const createSpecificationsService = new CreateSpecificationService(specificationsRepository);
+  const createSpecificationController = new CreateSpecificationController(
+    createSpecificationsService
+  );
+  return createSpecificationController;
+};
 
-export { createSpecificationController, createSpecificationsService };
+export { instantiateCreateSpecificationController };

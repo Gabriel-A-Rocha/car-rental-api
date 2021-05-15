@@ -13,25 +13,20 @@ class VolatileSpecificationsRepository implements ISpecificationsRepository {
     if (!this.singletonInstance) {
       this.singletonInstance = new VolatileSpecificationsRepository();
     }
-
     return this.singletonInstance;
   }
 
-  create(name: string, description: string): Specification {
+  async create(name: string, description: string): Promise<void> {
     const specification = new Specification(name, description);
-
     this.specifications.push(specification);
-
-    return specification;
   }
 
-  findByName(name: string): Specification | undefined {
+  async findByName(name: string): Promise<Specification | undefined> {
     const specificationRecord = this.specifications.find((s) => s.name === name);
-
     return specificationRecord;
   }
 
-  list() {
+  async list(): Promise<Specification[]> {
     return this.specifications;
   }
 }
