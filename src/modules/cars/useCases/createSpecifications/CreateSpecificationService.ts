@@ -19,7 +19,7 @@ class CreateSpecificationService {
       throw "Specification name already exists.";
     }
 
-    this.specificationsRepository.create(name, description);
+    await this.specificationsRepository.create(name, description);
   }
 }
 
