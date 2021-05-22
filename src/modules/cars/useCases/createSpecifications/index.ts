@@ -2,13 +2,8 @@ import { SpecificationsRepository } from "../../repositories/implementations/Spe
 import { CreateSpecificationController } from "./CreateSpecificationController";
 import { CreateSpecificationService } from "./CreateSpecificationService";
 
-const instantiateCreateSpecificationController = () => {
+export const instantiateCreateSpecificationController = () => {
   const specificationsRepository = new SpecificationsRepository();
   const createSpecificationsService = new CreateSpecificationService(specificationsRepository);
-  const createSpecificationController = new CreateSpecificationController(
-    createSpecificationsService
-  );
-  return createSpecificationController;
+  return new CreateSpecificationController(createSpecificationsService);
 };
-
-export { instantiateCreateSpecificationController };

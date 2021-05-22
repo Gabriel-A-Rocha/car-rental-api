@@ -2,7 +2,7 @@ import { getRepository, Repository } from "typeorm";
 import { Specification } from "../../entities/Specification";
 import { ISpecificationsRepository } from "../ISpecificationsRepository";
 
-class SpecificationsRepository implements ISpecificationsRepository {
+export class SpecificationsRepository implements ISpecificationsRepository {
   private specificationsRepository: Repository<Specification>;
 
   constructor() {
@@ -28,5 +28,3 @@ class SpecificationsRepository implements ISpecificationsRepository {
     return records;
   }
 }
-
-export { SpecificationsRepository };

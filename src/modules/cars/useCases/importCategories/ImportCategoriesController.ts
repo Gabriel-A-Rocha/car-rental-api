@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { ImportCategoriesService } from "./ImportCategoriesService";
 
-class ImportCategoriesController {
-  importCategoriesService: ImportCategoriesService;
+export class ImportCategoriesController {
+  private importCategoriesService: ImportCategoriesService;
 
   constructor(importCategoriesService: ImportCategoriesService) {
     this.importCategoriesService = importCategoriesService;
@@ -11,14 +11,11 @@ class ImportCategoriesController {
   async handle(req: Request, res: Response) {
     try {
       const { file } = req;
+      await this.importCategoriesService.execute(file);
 
-      const importedCategories = await this.importCategoriesService.execute(file);
-
-      return res.status(201).json(importedCategories);
+      return res.status(201).json();
     } catch (error) {
       return res.status(400).json({ error });
     }
   }
 }
-
-export { ImportCategoriesController };

@@ -2,7 +2,7 @@ import { getRepository, Repository } from "typeorm";
 import { Category } from "../../entities/Category";
 import { ICategoriesRepository } from "../ICategoriesRepository";
 
-class CategoriesRepository implements ICategoriesRepository {
+export class CategoriesRepository implements ICategoriesRepository {
   private repository: Repository<Category>;
 
   constructor() {
@@ -31,5 +31,3 @@ class CategoriesRepository implements ICategoriesRepository {
     return category;
   }
 }
-
-export { CategoriesRepository };

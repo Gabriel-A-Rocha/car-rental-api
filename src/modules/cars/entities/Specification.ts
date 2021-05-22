@@ -1,19 +1,19 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-@Entity("specifications")
-class Specification {
+@Entity({ name: "specifications" })
+export class Specification {
   @PrimaryColumn()
-  private id: string;
+  readonly id: string;
 
   @Column()
-  name: string;
+  readonly name: string;
 
   @Column()
-  description: string;
+  readonly description: string;
 
   @CreateDateColumn()
-  created_at?: Date;
+  readonly created_at?: Date;
 
   constructor(name: string, description: string) {
     this.id = uuidV4();
@@ -21,5 +21,3 @@ class Specification {
     this.description = description;
   }
 }
-
-export { Specification };

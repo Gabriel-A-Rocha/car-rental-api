@@ -6,7 +6,7 @@ interface ICategoryUpload {
   name: string;
   description: string;
 }
-class ImportCategoriesService {
+export class ImportCategoriesService {
   private categoriesRepository: ICategoriesRepository;
 
   constructor(categoriesRepository: ICategoriesRepository) {
@@ -51,9 +51,5 @@ class ImportCategoriesService {
     });
 
     fs.promises.unlink(file.path);
-
-    return categories;
   }
 }
-
-export { ImportCategoriesService };

@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { CreateCategoryService } from "./CreateCategoryService";
 
-class CreateCategoryController {
-  createCategoryService: CreateCategoryService;
+export class CreateCategoryController {
+  private createCategoryService: CreateCategoryService;
 
   constructor(createCategoryService: CreateCategoryService) {
     this.createCategoryService = createCategoryService;
@@ -20,5 +20,3 @@ class CreateCategoryController {
     }
   }
 }
-
-export { CreateCategoryController };

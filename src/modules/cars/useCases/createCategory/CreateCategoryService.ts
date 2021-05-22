@@ -1,6 +1,6 @@
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 
-class CreateCategoryService {
+export class CreateCategoryService {
   private categoriesRepository: ICategoriesRepository;
 
   constructor(categoriesRepository: ICategoriesRepository) {
@@ -21,5 +21,3 @@ class CreateCategoryService {
     await this.categoriesRepository.create(name, description);
   }
 }
-
-export { CreateCategoryService };

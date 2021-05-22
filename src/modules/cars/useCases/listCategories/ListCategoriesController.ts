@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { ListCategoriesService } from "./ListCategoriesService";
 
-class ListCategoriesController {
-  listCategoriesService: ListCategoriesService;
+export class ListCategoriesController {
+  private listCategoriesService: ListCategoriesService;
 
   constructor(listCategoriesService: ListCategoriesService) {
     this.listCategoriesService = listCategoriesService;
@@ -17,5 +17,3 @@ class ListCategoriesController {
     }
   }
 }
-
-export { ListCategoriesController };

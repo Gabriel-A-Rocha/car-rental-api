@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { SpecificationsRepository } from "../../repositories/implementations/SpecificationsRepository";
 
-class ListSpecificationsController {
-  specificationsRepository;
+export class ListSpecificationsController {
+  private specificationsRepository;
 
   constructor() {
     this.specificationsRepository = new SpecificationsRepository();
@@ -13,5 +13,3 @@ class ListSpecificationsController {
     return res.status(200).json(records);
   }
 }
-
-export { ListSpecificationsController };

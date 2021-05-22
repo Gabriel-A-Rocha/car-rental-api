@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { CreateSpecificationService } from "./CreateSpecificationService";
 
-class CreateSpecificationController {
+export class CreateSpecificationController {
   private createSpecificationService: CreateSpecificationService;
 
   constructor(createSpecificationService: CreateSpecificationService) {
@@ -19,5 +19,3 @@ class CreateSpecificationController {
     }
   }
 }
-
-export { CreateSpecificationController };

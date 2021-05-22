@@ -1,8 +1,7 @@
-import { Specification } from "../../entities/Specification";
 import { ISpecificationsRepository } from "../../repositories/ISpecificationsRepository";
 
-class CreateSpecificationService {
-  specificationsRepository: ISpecificationsRepository;
+export class CreateSpecificationService {
+  private specificationsRepository: ISpecificationsRepository;
 
   constructor(specificationsRepository: ISpecificationsRepository) {
     this.specificationsRepository = specificationsRepository;
@@ -22,5 +21,3 @@ class CreateSpecificationService {
     await this.specificationsRepository.create(name, description);
   }
 }
-
-export { CreateSpecificationService };

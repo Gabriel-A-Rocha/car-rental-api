@@ -1,6 +1,6 @@
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 
-class ListCategoriesService {
+export class ListCategoriesService {
   categoriesRepository: ICategoriesRepository;
 
   constructor(categoriesRepository: ICategoriesRepository) {
@@ -12,5 +12,3 @@ class ListCategoriesService {
     return categories;
   }
 }
-
-export { ListCategoriesService };
