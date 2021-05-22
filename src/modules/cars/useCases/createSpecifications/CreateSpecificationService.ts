@@ -1,9 +1,7 @@
 import { ISpecificationsRepository } from "../../repositories/ISpecificationsRepository";
 
 export class CreateSpecificationService {
-  private specificationsRepository: ISpecificationsRepository;
-
-  constructor(specificationsRepository: ISpecificationsRepository) {
+  constructor(private specificationsRepository: ISpecificationsRepository) {
     this.specificationsRepository = specificationsRepository;
   }
 

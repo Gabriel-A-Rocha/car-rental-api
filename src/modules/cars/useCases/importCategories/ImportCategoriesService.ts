@@ -7,9 +7,7 @@ interface ICategoryUpload {
   description: string;
 }
 export class ImportCategoriesService {
-  private categoriesRepository: ICategoriesRepository;
-
-  constructor(categoriesRepository: ICategoriesRepository) {
+  constructor(private categoriesRepository: ICategoriesRepository) {
     this.categoriesRepository = categoriesRepository;
   }
 

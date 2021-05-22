@@ -2,9 +2,7 @@ import { Request, Response } from "express";
 import { ImportCategoriesService } from "./ImportCategoriesService";
 
 export class ImportCategoriesController {
-  private importCategoriesService: ImportCategoriesService;
-
-  constructor(importCategoriesService: ImportCategoriesService) {
+  constructor(private importCategoriesService: ImportCategoriesService) {
     this.importCategoriesService = importCategoriesService;
   }
 

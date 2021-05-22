@@ -8,17 +8,15 @@ import {
 
 const upload = multer({ dest: "./tmp" });
 
-const categoriesRouter = Router();
+export const categoriesRouter = Router();
 
 categoriesRouter
-  .route("/")
+  .route("/categories")
   .post((req, res) => instantiateCreateCategoryController().handle(req, res))
   .get((req, res) => instantiateListCategoryController().handle(req, res));
 
 categoriesRouter
-  .route("/import")
+  .route("/categories/import")
   .post(upload.single("file"), (req, res) =>
     instantiateImportCategoriesController().handle(req, res)
   );
-
-export { categoriesRouter };

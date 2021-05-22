@@ -3,27 +3,27 @@ import { Category } from "../../entities/Category";
 import { ICategoriesRepository } from "../ICategoriesRepository";
 
 export class CategoriesRepository implements ICategoriesRepository {
-  private repository: Repository<Category>;
+  private categoriesRepository: Repository<Category>;
 
   constructor() {
-    this.repository = getRepository(Category);
+    this.categoriesRepository = getRepository(Category);
   }
 
   async create(name: string, description: string): Promise<void> {
-    const category = this.repository.create({
+    const category = this.categoriesRepository.create({
       name,
       description,
     });
-    await this.repository.save(category);
+    await this.categoriesRepository.save(category);
   }
 
   async list(): Promise<Category[]> {
-    const categories = await this.repository.find();
+    const categories = await this.categoriesRepository.find();
     return categories;
   }
 
   async findByName(name: string): Promise<Category | undefined> {
-    const category = await this.repository.findOne({
+    const category = await this.categoriesRepository.findOne({
       where: {
         name,
       },

@@ -2,9 +2,7 @@ import { Request, Response } from "express";
 import { CreateCategoryService } from "./CreateCategoryService";
 
 export class CreateCategoryController {
-  private createCategoryService: CreateCategoryService;
-
-  constructor(createCategoryService: CreateCategoryService) {
+  constructor(private createCategoryService: CreateCategoryService) {
     this.createCategoryService = createCategoryService;
   }
 

@@ -4,11 +4,9 @@ import {
   instantiateListSpecificationController,
 } from "../modules/cars/useCases";
 
-const specificationsRouter = Router();
+export const specificationsRouter = Router();
 
 specificationsRouter
-  .route("/")
+  .route("/specifications")
   .post((req, res) => instantiateCreateSpecificationController().handle(req, res))
   .get((req, res) => instantiateListSpecificationController().handle(req, res));
-
-export { specificationsRouter };

@@ -2,9 +2,7 @@ import { Request, Response } from "express";
 import { CreateSpecificationService } from "./CreateSpecificationService";
 
 export class CreateSpecificationController {
-  private createSpecificationService: CreateSpecificationService;
-
-  constructor(createSpecificationService: CreateSpecificationService) {
+  constructor(private createSpecificationService: CreateSpecificationService) {
     this.createSpecificationService = createSpecificationService;
   }
   async handle(req: Request, res: Response) {
