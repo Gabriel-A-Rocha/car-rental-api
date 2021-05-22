@@ -1,7 +1,11 @@
+import { inject, injectable } from "tsyringe";
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 
+@injectable()
 export class ListCategoriesService {
-  constructor(private categoriesRepository: ICategoriesRepository) {
+  constructor(
+    @inject("ICategoriesRepository") private categoriesRepository: ICategoriesRepository
+  ) {
     this.categoriesRepository = categoriesRepository;
   }
 

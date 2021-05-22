@@ -1,12 +1,12 @@
 import { Router } from "express";
 import {
-  instantiateCreateSpecificationController,
-  instantiateListSpecificationController,
+  CreateSpecificationController,
+  ListSpecificationsController,
 } from "../modules/cars/useCases";
 
 export const specificationsRouter = Router();
 
 specificationsRouter
   .route("/specifications")
-  .post((req, res) => instantiateCreateSpecificationController().handle(req, res))
-  .get((req, res) => instantiateListSpecificationController().handle(req, res));
+  .post(new CreateSpecificationController().handle)
+  .get(new ListSpecificationsController().handle);

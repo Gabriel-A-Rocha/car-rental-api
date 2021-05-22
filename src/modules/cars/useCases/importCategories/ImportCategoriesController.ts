@@ -1,15 +1,14 @@
 import { Request, Response } from "express";
+import { container } from "tsyringe";
 import { ImportCategoriesService } from "./ImportCategoriesService";
 
 export class ImportCategoriesController {
-  constructor(private importCategoriesService: ImportCategoriesService) {
-    this.importCategoriesService = importCategoriesService;
-  }
-
   async handle(req: Request, res: Response) {
     try {
       const { file } = req;
-      await this.importCategoriesService.execute(file);
+
+      const importCategoriesService = container.resolve(ImportCategoriesService);
+      await importCategoriesService.execute(file);
 
       return res.status(201).json();
     } catch (error) {

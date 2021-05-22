@@ -1,21 +1,19 @@
-import { ISpecificationsRepository } from "../../repositories/ISpecificationsRepository";
+import { container } from "tsyringe";
+import { SpecificationsRepository } from "../../repositories/implementations/SpecificationsRepository";
 
 export class CreateSpecificationService {
-  constructor(private specificationsRepository: ISpecificationsRepository) {
-    this.specificationsRepository = specificationsRepository;
-  }
-
   async execute(name: string, description: string): Promise<void> {
     if (!name || !description) {
-      throw "Empty parameters.";
+      throw "Empty parameter";
     }
 
-    const specificationRecord = await this.specificationsRepository.findByName(name);
+    const specificationsRepository = container.resolve(SpecificationsRepository);
+    const specificationRecord = await specificationsRepository.findByName(name);
 
     if (specificationRecord) {
       throw "Specification name already exists.";
     }
 
-    await this.specificationsRepository.create(name, description);
+    await specificationsRepository.create(name, description);
   }
 }
