@@ -11,7 +11,7 @@ export class CreateSpecificationService {
     const specificationRecord = await specificationsRepository.findByName(name);
 
     if (specificationRecord) {
-      throw "Specification name already exists.";
+      throw "Specification name already exists";
     }
 
     await specificationsRepository.create(name, description);

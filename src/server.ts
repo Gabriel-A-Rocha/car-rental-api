@@ -4,8 +4,8 @@ import { router } from "./routes";
 import { initializeDatabaseConnection } from "./database";
 
 initializeDatabaseConnection()
-  .then(() => {
-    console.log("Database connection successful");
+  .then((connection) => {
+    console.log(connection.options);
     initializeExpressServer();
   })
   .catch((error) =>

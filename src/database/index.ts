@@ -1,5 +1,6 @@
 import { createConnection } from "typeorm";
 
 export const initializeDatabaseConnection = async () => {
-  await createConnection();
+  const connection = await createConnection();
+  return connection;
 };
