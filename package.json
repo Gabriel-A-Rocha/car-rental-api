@@ -5,9 +5,9 @@
   "main": "src/server.js",
   "scripts": {
     "tsc": "tsc",
-    "start": "ts-node-dev src/server.ts",
+    "start": "ts-node-dev --transpile-only src/server.ts",
     "start:debug": "ts-node-dev --inspect -- src/server.ts ",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js"
+    "typeorm": "ts-node-dev --transpile-only ./node_modules/typeorm/cli.js"
   },
   "author": "",
   "license": "ISC",

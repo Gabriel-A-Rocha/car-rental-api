@@ -8,12 +8,7 @@ initializeDatabaseConnection()
     console.log(connection.options);
     initializeExpressServer();
   })
-  .catch((error) =>
-    console.log({
-      msg: "Database connection failed",
-      error,
-    })
-  );
+  .catch((error) => console.log({ error }));
 
 const initializeExpressServer = () => {
   const app = express();
