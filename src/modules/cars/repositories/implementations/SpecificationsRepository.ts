@@ -10,7 +10,7 @@ export class SpecificationsRepository implements ISpecificationsRepository {
   }
 
   async create(name: string, description: string): Promise<void> {
-    const record = await this.specificationsRepository.findOne(name);
+    const record = await this.specificationsRepository.findOne({ where: { name } });
 
     if (!record) {
       const specification = this.specificationsRepository.create({ name, description });

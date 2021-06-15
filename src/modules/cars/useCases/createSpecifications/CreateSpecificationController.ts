@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
-import { container } from "tsyringe";
+import { container, injectable } from "tsyringe";
 import { CreateSpecificationService } from "./CreateSpecificationService";
 
+@injectable()
 export class CreateSpecificationController {
   async handle(req: Request, res: Response) {
     try {
