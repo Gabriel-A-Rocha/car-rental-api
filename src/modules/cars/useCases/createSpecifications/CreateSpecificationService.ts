@@ -1,5 +1,4 @@
-import { container, inject, injectable } from "tsyringe";
-import { SpecificationsRepository } from "../../repositories/implementations/SpecificationsRepository";
+import { inject, injectable } from "tsyringe";
 import { ISpecificationsRepository } from "../../repositories/ISpecificationsRepository";
 
 @injectable()

@@ -3,7 +3,7 @@ import { User } from "../../entities/User";
 import { ICreateUserDTO, IUsersRepository } from "../IUsersRepository";
 
 export class UsersRepository implements IUsersRepository {
-  repository: Repository<User>;
+  private repository: Repository<User>;
 
   constructor() {
     this.repository = getRepository(User);
