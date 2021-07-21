@@ -28,7 +28,7 @@ export class CreateUsers1622168741948 implements MigrationInterface {
             type: "text",
           },
           {
-            name: "driver_license",
+            name: "driver_licence",
             type: "text",
           },
           {
