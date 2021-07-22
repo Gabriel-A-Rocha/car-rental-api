@@ -10,7 +10,7 @@ export class UsersRepository implements IUsersRepository {
   }
 
   async create(data: ICreateUserDTO): Promise<void> {
-    const { name, username, password, email, driver_licence } = data;
+    const { name, password, email, driver_licence } = data;
 
     /* const userRecord = await this.repository.findOne({ where: { email } });
     if (userRecord.email) {
@@ -19,7 +19,6 @@ export class UsersRepository implements IUsersRepository {
 
     const newUser = this.repository.create({
       name,
-      username,
       password,
       email,
       driver_licence,
