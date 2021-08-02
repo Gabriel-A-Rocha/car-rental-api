@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../../errors/AppError";
 import { ISpecificationsRepository } from "../../repositories/ISpecificationsRepository";
 
 @injectable()
@@ -11,14 +12,14 @@ export class CreateSpecificationService {
 
   async execute(name: string, description: string): Promise<void> {
     if (!name || !description) {
-      throw "Empty parameter";
+      throw new AppError(400, "Empty parameter");
     }
 
     //const specificationsRepository = container.resolve(SpecificationsRepository);
     const specificationRecord = await this.specificationsRepository.findByName(name);
 
     if (specificationRecord) {
-      throw "Specification name already exists";
+      throw new AppError(400, "Specification name already exists");
     }
 
     await this.specificationsRepository.create(name, description);

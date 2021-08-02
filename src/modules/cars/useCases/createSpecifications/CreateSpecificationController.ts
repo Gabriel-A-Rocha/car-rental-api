@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { container, injectable } from "tsyringe";
+import { AppError } from "../../../../errors/AppError";
 import { CreateSpecificationService } from "./CreateSpecificationService";
 
 @injectable()

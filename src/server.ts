@@ -1,7 +1,8 @@
 import "reflect-metadata";
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import { router } from "./routes";
 import { initializeDatabaseConnection } from "./database";
+import { AppError } from "./errors/AppError";
 
 initializeDatabaseConnection()
   .then((connection) => {
@@ -18,6 +19,13 @@ const initializeExpressServer = () => {
   app.use(express.urlencoded({ extended: true }));
 
   app.use(router);
+
+  app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    if (err) {
+      const error = err as AppError;
+      return res.status(error.statusCode).json({ message: err.message });
+    }
+  });
 
   const port = 3333;
 

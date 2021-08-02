@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { ICreateUserDTO, IUsersRepository } from "../../repositories/IUsersRepository";
 import { hash } from "bcrypt";
+import { AppError } from "../../../../errors/AppError";
 
 @injectable()
 export class CreateUserService {
@@ -12,7 +13,7 @@ export class CreateUserService {
     const userRecord = await this.usersRepository.findByEmail(data.email);
 
     if (userRecord) {
-      throw "Email already created";
+      throw new AppError(400, "Email already created");
     }
 
     const passwordHash = await hash(data.password, 12);

@@ -1,4 +1,5 @@
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../../errors/AppError";
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 
 @injectable()
@@ -11,13 +12,13 @@ export class CreateCategoryService {
 
   async execute(name: string, description: string): Promise<void> {
     if (!name || !description) {
-      throw "Empty parameter";
+      throw new AppError(400, "Empty parameter");
     }
 
     const categoryExists = await this.categoriesRepository.findByName(name);
 
     if (categoryExists) {
-      throw "Category already exists";
+      throw new AppError(400, "Category already exists");
     }
 
     await this.categoriesRepository.create(name, description);
