@@ -21,10 +21,17 @@ const initializeExpressServer = () => {
   app.use(router);
 
   app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    if (err) {
-      const error = err as AppError;
-      return res.status(error.statusCode).json({ message: err.message });
+    const { statusCode, message } = err as AppError;
+
+    if (statusCode) {
+      return res.status(statusCode).json({ error: message });
     }
+
+    next(err);
+  });
+
+  app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+    return res.status(500).json({ error: err.message });
   });
 
   const port = 3333;

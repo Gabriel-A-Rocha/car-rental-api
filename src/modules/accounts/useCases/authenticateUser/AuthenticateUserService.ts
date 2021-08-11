@@ -3,6 +3,8 @@ import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
 import { AppError } from "../../../../errors/AppError";
+import { MetadataWithSuchNameAlreadyExistsError } from "typeorm";
+import { NextFunction } from "express";
 
 interface AuthenticationDTO {
   email: string;
@@ -25,13 +27,13 @@ export class AuthenticateUserService {
     const userRecord = await this.usersRepository.findByEmail(email);
 
     if (!userRecord) {
-      throw new AppError(400, "Email or password incorrect");
+      throw new AppError(401, "Email or password incorrect");
     }
 
     const passwordMatch = await compare(password, userRecord.password);
 
     if (!passwordMatch) {
-      throw new AppError(400, "Email or password incorrect");
+      throw new AppError(401, "Email or password incorrect");
     }
 
     // temporarySecretForTesting = 1c8ec95f6dea05dd26f0235fa28c74b1

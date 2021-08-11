@@ -8,9 +8,9 @@ import { authenticationRouter } from "./authentication.routes";
 
 export const router = Router();
 
+router.use(authenticationRouter);
 router.use(categoriesRouter);
 router.use(specificationsRouter);
 router.use(usersRouter);
-router.use(authenticationRouter);
 
 router.use(swaggerRouter);
