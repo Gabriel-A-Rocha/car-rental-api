@@ -2,6 +2,7 @@ import { ICategoriesRepository } from "../../repositories/ICategoriesRepository"
 import fs from "fs";
 import csvParse from "csv-parse";
 import { inject, injectable } from "tsyringe";
+import { AppError } from "../../../../errors/AppError";
 
 interface ICategoryUpload {
   name: string;
@@ -17,6 +18,10 @@ export class ImportCategoriesService {
   }
 
   async loadCategories(file: Express.Multer.File): Promise<ICategoryUpload[]> {
+    if (file.mimetype !== "text/csv" || file.size === 0) {
+      throw new AppError(400, "Invalid file");
+    }
+
     return new Promise((resolve, reject) => {
       const readStream = fs.createReadStream(file.path);
 
@@ -35,7 +40,7 @@ export class ImportCategoriesService {
           resolve(loadedCategories);
         })
         .on("error", (err) => {
-          reject({ err });
+          reject(err);
         });
     });
   }

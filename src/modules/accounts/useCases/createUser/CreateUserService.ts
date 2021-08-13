@@ -13,10 +13,11 @@ export class CreateUserService {
     const userRecord = await this.usersRepository.findByEmail(data.email);
 
     if (userRecord) {
-      throw new AppError(400, "Email already created");
+      throw new AppError(400, "This email is already in use");
     }
 
     const passwordHash = await hash(data.password, 12);
+
     await this.usersRepository.create({ ...data, password: passwordHash });
   }
 }

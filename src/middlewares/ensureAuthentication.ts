@@ -15,7 +15,7 @@ export async function ensureAuthentication(req: Request, res: Response, next: Ne
     const authHeader = req.headers.authorization;
 
     if (!authHeader) {
-      throw new Error("Missing token");
+      throw new AppError(401, "Missing token");
     }
 
     const token = authHeader.split(" ")[1];
@@ -27,7 +27,7 @@ export async function ensureAuthentication(req: Request, res: Response, next: Ne
     const user = usersRepository.findById(userId);
 
     if (!user) {
-      throw new Error("User does not exist");
+      throw new AppError(401, "Invalid user");
     }
 
     next();

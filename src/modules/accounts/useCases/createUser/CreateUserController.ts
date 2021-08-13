@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { container } from "tsyringe";
 import { CreateUserService } from "./CreateUserService";
 
 export class CreateUserController {
-  async handle(req: Request, res: Response): Promise<Response> {
+  async handle(req: Request, res: Response, next: NextFunction): Promise<Response> {
     try {
       const data = req.body;
 
@@ -12,7 +12,7 @@ export class CreateUserController {
 
       return res.status(201).json();
     } catch (error) {
-      return res.status(400).json({ error });
+      next(error);
     }
   }
 }

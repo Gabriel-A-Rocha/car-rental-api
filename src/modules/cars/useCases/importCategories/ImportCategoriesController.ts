@@ -1,9 +1,9 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import { container } from "tsyringe";
 import { ImportCategoriesService } from "./ImportCategoriesService";
 
 export class ImportCategoriesController {
-  async handle(req: Request, res: Response) {
+  async handle(req: Request, res: Response, next: NextFunction) {
     try {
       const { file } = req;
 
@@ -12,7 +12,7 @@ export class ImportCategoriesController {
 
       return res.status(201).json();
     } catch (error) {
-      return res.status(400).json({ error });
+      next(error);
     }
   }
 }

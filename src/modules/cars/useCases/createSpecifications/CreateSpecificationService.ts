@@ -15,7 +15,6 @@ export class CreateSpecificationService {
       throw new AppError(400, "Empty parameter");
     }
 
-    //const specificationsRepository = container.resolve(SpecificationsRepository);
     const specificationRecord = await this.specificationsRepository.findByName(name);
 
     if (specificationRecord) {
