@@ -1,4 +1,5 @@
 import { getRepository, Repository } from "typeorm";
+import { AppError } from "../../../../errors/AppError";
 import { User } from "../../entities/User";
 import { ICreateUserDTO, IUsersRepository } from "../IUsersRepository";
 
@@ -10,13 +11,15 @@ export class UsersRepository implements IUsersRepository {
   }
 
   async create(data: ICreateUserDTO): Promise<void> {
-    const { name, password, email, driver_licence } = data;
+    const { name, password, email, driver_licence, avatar, id } = data;
 
     const newUser = this.repository.create({
       name,
       password,
       email,
       driver_licence,
+      avatar,
+      id,
     });
 
     await this.repository.save(newUser);

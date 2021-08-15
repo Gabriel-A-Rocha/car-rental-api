@@ -20,6 +20,7 @@ const initializeExpressServer = () => {
 
   app.use(router);
 
+  // middleware for caught exceptions
   app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     const { statusCode, message } = err as AppError;
 
@@ -30,6 +31,7 @@ const initializeExpressServer = () => {
     next(err);
   });
 
+  //middleware for uncaught exceptions
   app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     return res.status(500).json({ error: err.message });
   });

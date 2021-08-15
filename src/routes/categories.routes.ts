@@ -1,6 +1,5 @@
 import { Router } from "express";
 import multer from "multer";
-import { ensureAuthentication } from "../middlewares/ensureAuthentication";
 import {
   CreateCategoryController,
   ImportCategoriesController,
