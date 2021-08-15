@@ -30,6 +30,10 @@ export async function ensureAuthentication(req: Request, res: Response, next: Ne
       throw new AppError(401, "Invalid user");
     }
 
+    req.user = {
+      id: userId,
+    };
+
     next();
   } catch (error) {
     next(error);
