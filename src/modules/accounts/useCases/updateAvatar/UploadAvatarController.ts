@@ -9,7 +9,7 @@ export class UploadAvatarController {
       const { file } = req;
 
       const uploadAvatarService = container.resolve(UploadAvatarService);
-      await uploadAvatarService.execute(userId, file.path);
+      await uploadAvatarService.execute(userId, file);
 
       return res.status(204).json({ msg: "Avatar successfully updated" });
     } catch (error) {

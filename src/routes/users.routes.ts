@@ -3,8 +3,9 @@ import { CreateUserController } from "../modules/accounts/useCases/createUser/Cr
 import multer from "multer";
 import { UploadAvatarController } from "../modules/accounts/useCases/updateAvatar/UploadAvatarController";
 import { ensureAuthentication } from "../middlewares/ensureAuthentication";
+import { uploadConfig } from "../config/upload";
 
-const upload = multer({ dest: "./tmp/avatar" });
+const uploadAvatar = multer(uploadConfig("./tmp/avatar"));
 
 export const usersRouter = Router();
 
@@ -12,4 +13,4 @@ usersRouter.route("/users").post(new CreateUserController().handle);
 
 usersRouter
   .route("/users/upload-avatar")
-  .patch(ensureAuthentication, upload.single("avatar"), new UploadAvatarController().handle);
+  .patch(ensureAuthentication, uploadAvatar.single("avatar"), new UploadAvatarController().handle);

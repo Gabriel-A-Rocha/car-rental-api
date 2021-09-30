@@ -1,12 +1,13 @@
 import { Router } from "express";
 import multer from "multer";
+import { uploadConfig } from "../config/upload";
 import {
   CreateCategoryController,
   ImportCategoriesController,
   ListCategoriesController,
 } from "../modules/cars/useCases";
 
-const upload = multer({ dest: "./tmp" });
+const uploadCategories = multer(uploadConfig("./tmp"));
 
 export const categoriesRouter = Router();
 
@@ -17,4 +18,4 @@ categoriesRouter
 
 categoriesRouter
   .route("/categories/import")
-  .post(upload.single("file"), new ImportCategoriesController().handle);
+  .post(uploadCategories.single("categories"), new ImportCategoriesController().handle);
