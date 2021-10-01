@@ -3,7 +3,7 @@ import { container } from "tsyringe";
 import { UploadAvatarService } from "./UploadAvatarService";
 
 export class UploadAvatarController {
-  async handle(req: Request, res: Response, next: NextFunction) {
+  async handle(req: Request, res: Response, next: NextFunction): Promise<Response> {
     try {
       const userId = req.user.id;
       const { file } = req;
